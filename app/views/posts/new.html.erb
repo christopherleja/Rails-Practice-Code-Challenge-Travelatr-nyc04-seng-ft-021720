@@ -1,0 +1,21 @@
+<h1>Create A New Post!</h1>
+
+
+<%= form_for @post do |f| %>
+
+<%= f.collection_select :blogger, Blogger.all, :id, :name %>
+<br>
+<%= f.collection_select :destination, Destination.all, :id, :name %>
+<br>
+<%= f.label :title %>
+<%= f.text_field :title %>
+<br>
+<%= f.label :content %>
+<%= f.text_area :content %>
+<br>
+<%=f.submit%>
+<%end%>
+
+<% if !@post.valid?%>
+<%= @post.errors.messages %>
+<%end%>
